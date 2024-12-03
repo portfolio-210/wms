@@ -1,4 +1,4 @@
-package wms.service;
+package DTO;
 
 public class test {
 

@@ -1,4 +1,4 @@
-package wms.serviceimp;
+package mapper;
 
 public class test {
 
