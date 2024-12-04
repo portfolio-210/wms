@@ -2,7 +2,32 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="wms.mapper.config_mapper">
 
+<select id="all" parameterType="Map" resultType="DTO.config_DTO">
 
+select * from member
+<choose>
+	<when test="part1=='1'">
+		<choose>
+		 <when test="part2=='1'">
+		  where mname = #{search} and mpart = 
+		 </when>
+		
+		
+		</choose>		
+	</when>
+	<when test="part1=='2'">
+	
+	
+	
+	</when>
+	
+	<otherwise>
+		order by pidx desc
+	</otherwise>
+</choose>
+	
+
+</select>
 
 
 
