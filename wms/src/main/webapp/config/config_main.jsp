@@ -8,17 +8,20 @@
 <!-- Nav -->
 <%@ include file="../nav.jsp"%>   
 
+<!--<script src="./config.js"></script>-->
 <main role="main" style="height: 850px;">
+
   <div class="container">
     <div>
     <p class="sub_title font16_bold">관리자 현황</p>
+    <form id="frm" method="post" action="/config/config_main.do" onsubmit="search()">
     <div class="mb-3" style="position: relative;">
         <ul class="ul-2">
             <li class="num_font13_bold">소 속</li>
             <li>
-                <select name="part1" id="searchType" style="width: 100px; height: 40px; margin-right: 5px;" class="form-control font12">
-                    <option value="1">본사</option>
-                    <option value="2">지점</option>
+                <select name="part1" id="part1" style="width: 100px; height: 40px; margin-right: 5px;" class="form-control font12">
+                    <option value="본사">본사</option>
+                    <option value="지점">지점</option>
                 </select>
             </li>
             <li></li>
@@ -27,13 +30,13 @@
        <ul class="ul-2">
 		    <li class="num_font13_bold">검색형식</li>
 		    <li style="width: 85%; display: flex; flex-direction: row;">
-		        <select name="part2" id="searchType" style="width: 100px; height: 40px; margin-right: 5px;" class="form-control font12">
+		        <select name="part2" id="part2" style="width: 100px; height: 40px; margin-right: 5px;" class="form-control font12">
 		            <option value="1">이름</option>
 		            <option value="2">아이디</option>
 		            <option value="3">연락처</option>
 		        </select>
-		        <input type="text" id="searchKeyword" style="width: 200px; height: 40px;" class="form-control font12" placeholder="검색어를 입력하세요">
-		        <button type="button" class="btn btn-primary font12" style="width: 70px; height: 40px; margin-left:10px; margin-right: 10px;" onclick="search()">검색</button>
+		        <input type="text" id="searchKeyword" name="search" style="width: 200px; height: 40px;" class="form-control font12" placeholder="검색어를 입력하세요">
+		        <input type="submit" value="검색" class="btn btn-primary font12" style="width: 70px; height: 40px; margin-left:10px; margin-right: 10px;">
 		        <button type="button" class="btn btn-dark font12" style="width: 70px; height: 40px; margin-right: 10px;" onclick="searchAll()">전체</button> 
 		    </li>
 		</ul>
@@ -79,6 +82,7 @@
             </tbody>
           </table>
      </div>
+     </form>
      <div class="mb-3">
         <ul class="pageing">
           <li>1</li>
@@ -87,6 +91,30 @@
     </div>
   </div>
 </main>
+<script>
+function search(){
+	
+	var a = document.getElementById("searchKeyword").value.trim();
+	var part1 = document.getElementById("part1").value; // 소속
+	var part2 = document.getElementById("part2").value; // 검색 형식
+	
+	if(a==""){
+			alert("검색어를 입력하세요");
+			return false;
+		}
+		else{
+			return true;
+		}
+	
+			
+}
 
+function searchAll(){
+	
+	
+	
+	
+}
+</script>
 <!-- Footer -->
 <%@ include file="../footer.jsp"%>
