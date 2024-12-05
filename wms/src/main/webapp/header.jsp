@@ -22,9 +22,9 @@
  	<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script>window.jQuery || document.write('<script src="../assets/js/vendor/jquery.slim.min.js"><\/script>')</script>
     <script src="./js/bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" href="./css/bootstrap.css?v=1">
-    <link rel="stylesheet" href="./css/default.css?v=20241124">  
-    <link rel="stylesheet" href="./css/jumbotron.css">  
+    <link rel="stylesheet" href="/css/bootstrap.css?v=1">
+    <link rel="stylesheet" href="/css/default.css?v=20241124">  
+    <link rel="stylesheet" href="/css/jumbotron.css">  
     <style>
       .bd-placeholder-img {
         font-size: 1.125rem;

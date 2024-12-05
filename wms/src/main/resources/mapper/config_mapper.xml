@@ -2,8 +2,26 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="wms.mapper.config_mapper">
 
+<select id="all" parameterType="Map" resultType="DTO.config_DTO">
 
-
+select * from member
+     
+               where mpart = #{part1} <!-- 본사 또는 지점 -->    
+            <choose>
+                <when test="part2 == '1'">
+                    AND mname LIKE CONCAT('%', #{search}, '%') <!-- 이름 검색 -->
+                </when>
+                <when test="part2 == '2'">
+                    AND mid LIKE CONCAT('%', #{search}, '%') <!-- 아이디 검색 -->
+                </when>
+                <when test="part2 == '3'">
+                    AND memail LIKE CONCAT('%', #{search}, '%') <!-- 이메일 검색 -->
+                </when>
+            </choose>
+  
+        ORDER BY midx DESC
+</select>
+ 
 
 
 </mapper>
