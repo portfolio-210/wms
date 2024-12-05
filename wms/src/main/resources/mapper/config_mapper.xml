@@ -6,7 +6,7 @@
 
 select * from member
      
-               where mpart = #{part1} <!-- 본사 또는 지점 -->    
+               where mpart = #{part1} AND mname LIKE CONCAT('%', #{search}, '%')  <!-- 본사 또는 지점 -->    
             <choose>
                 <when test="part2 == '1'">
                     AND mname LIKE CONCAT('%', #{search}, '%') <!-- 이름 검색 -->
@@ -20,6 +20,14 @@ select * from member
             </choose>
   
         ORDER BY midx DESC
+</select>
+
+
+
+<select id="searchall" parameterType="String" resultType="DTO.config_DTO">
+
+select * from member ORDER BY midx DESC
+
 </select>
  
 

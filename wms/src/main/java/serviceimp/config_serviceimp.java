@@ -24,4 +24,11 @@ public class config_serviceimp implements config_service {
 			
 			return all;
 		}
+		
+		@Override
+		public List<config_DTO> searchall() {
+		
+		return config_mapper.searchall();
+		}
+		
 }

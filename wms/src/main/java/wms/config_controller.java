@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -36,9 +37,16 @@ public class config_controller {
 				
 				
 				m.addAttribute("members", all); // 'm'을 사용하여 모델에 추가
-				
 				return null;
 			}
+			
+			@GetMapping("/config_main.do")
+		    public String showMembers(Model m) {
+		        List<config_DTO> members = cs.searchall(); // 전체 멤버 가져오기
+		        m.addAttribute("members", members); // 모델에 추가
+		        return "config/config_main"; // JSP 페이지 이름 반환
+		    }
+			
 
        
         

@@ -8,13 +8,15 @@
 <!-- Nav -->
 <%@ include file="../nav.jsp"%>   
 
-<!--<script src="./config.js"></script>-->
+<script src="./config.js"></script>
+
 <main role="main" style="height: 850px;">
 
   <div class="container">
     <div>
     <p class="sub_title font16_bold">관리자 현황</p>
-    <form id="frm" method="post" action="/config/config_main.do" onsubmit="search()">
+    <form id="frm" method="post" action="/config/config_main.do" onsubmit="return getFormInfo()">
+  
     <div class="mb-3" style="position: relative;">
         <ul class="ul-2">
             <li class="num_font13_bold">소 속</li>
@@ -36,8 +38,8 @@
 		            <option value="3">연락처</option>
 		        </select>
 		        <input type="text" id="searchKeyword" name="search" style="width: 200px; height: 40px;" class="form-control font12" placeholder="검색어를 입력하세요">
-		        <input type="submit" value="검색" class="btn btn-primary font12" style="width: 70px; height: 40px; margin-left:10px; margin-right: 10px;">
-		        <button type="button" class="btn btn-dark font12" style="width: 70px; height: 40px; margin-right: 10px;" onclick="searchAll()">전체</button> 
+		        <button type="submit" onclick="getFormInfo()" class="btn btn-primary font12" style="width: 70px; height: 40px; margin-left: 10px; margin-right: 10px;">검색</button>
+		        <button type="button" onclick="searchall()" class="btn btn-dark font12" style="width: 70px; height: 40px; margin-left: 10px; margin-right: 10px;">전체</button>
 		    </li>
 		</ul>
      </div>
@@ -57,15 +59,15 @@
               </tr>
             </thead>
             <tbody>
-            
+            <c:forEach var="member" items="${members}">
               <tr align="center">
                 <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>${member.mpart}</td>
+                <td>${member.mid}</td>
+                <td>${member.mname}</td>
+                <td>${member.mjob}</td>
+                <td>${member.memail}</td>
+                <td>${member.mhp}</td>
                 <td>
                     <select style="width: 80px; height: 30px;" class="form-control font12">
                         <option>대기</option>
@@ -77,9 +79,9 @@
                 <td style="text-align: center;">
                     <button type="button" class="btn btn-dark font12" style="width: 50px; height: 30px; margin-right: 10px;">적용</button> 
                 </td>
-              </tr>
-             
+              </tr>            
             </tbody>
+            </c:forEach>
           </table>
      </div>
      </form>
@@ -91,30 +93,6 @@
     </div>
   </div>
 </main>
-<script>
-function search(){
-	
-	var a = document.getElementById("searchKeyword").value.trim();
-	var part1 = document.getElementById("part1").value; // 소속
-	var part2 = document.getElementById("part2").value; // 검색 형식
-	
-	if(a==""){
-			alert("검색어를 입력하세요");
-			return false;
-		}
-		else{
-			return true;
-		}
-	
-			
-}
 
-function searchAll(){
-	
-	
-	
-	
-}
-</script>
 <!-- Footer -->
 <%@ include file="../footer.jsp"%>
