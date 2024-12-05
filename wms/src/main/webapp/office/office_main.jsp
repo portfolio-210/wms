@@ -81,7 +81,7 @@
                     </th>
                     <th scope="col" style="height: 40px; line-height: 50px; width: 150px;">${office.memail}</th>
                     <th scope="col" style="height: 40px; line-height: 50px; width: 300px; text-align: left;">
-                        (${office.opost}) ${office.oaddress}
+                        (${office.opost}) ${office.oroad} ${office.oaddress}
                     </th>
                     <th scope="col" style="height: 40px; line-height: 50px; width: 120px;">
                         <ul class="btn_ul">
@@ -104,7 +104,7 @@
         </ul>
       </div>
       <div class="mb-3" style="text-align: right;">
-      	<button type="button" class="btn btn-danger font12" onclick="location.href='./insert_office.do'" style="width: 100px; height: 40px; margin-right: 40px;">지점등록</button> 
+      	<button type="button" class="btn btn-danger font12" onclick="location.href='../office/office_insert.jsp'" style="width: 100px; height: 40px; margin-right: 40px;">지점등록</button> 
       </div>
     </div>
   </div>

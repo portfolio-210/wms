@@ -1,3 +1,4 @@
+//office_main.jsp
 var search_word = document.getElementById("search");
 
 //검색 버튼 클릭 시 적용 함수
@@ -47,3 +48,39 @@ function delete_office(oidx){
 		location.href="../office/office_delete.do?oidx=" + window.btoa(oidx) + "&key=" + key;
 	}
 }
+
+
+//office_insert.jsp
+
+//지점명 중복체크 버튼 클릭 시 적용 함수
+function officenameCheck(){
+	var officename = frm.officename.value;
+	officename = officename.replaceAll(" ", "");
+	
+	//ajax로 중복 이름 있는 지 확인
+}
+
+//아이디 찾기 버튼 클릭 시 적용 함수
+function findId(){
+	location.href = "";	//pop_list로 이동
+}
+
+//등록하기 버튼 클릭 시 적용 함수
+function insert_ok(){
+	var oaddress = frm.oaddress.value;
+	if(oaddress == ""){
+		alert("상세 주소를 입력해주세요.");
+	}
+}
+
+//취소하기 버튼 클릭 시 적용 함수
+function cancel(){
+	frm.reset();
+}
+
+//주소 찾기 카카오 API 연동
+
+
+
+
+

@@ -3,11 +3,11 @@
 <mapper namespace="wms.mapper.office_mapper">
 
 	<select id="office_list" resultType="DTO.office_DTO">
-		select oidx, officename, mname, mhp, otel, memail, opost, oaddress from office where oview = 'Y' order by odate desc
+		select oidx, officename, mname, mhp, otel, memail, opost, oroad, oaddress from office where oview = 'Y' order by odate desc
 	</select>
 	
 	<select id="search_office" parameterType="String" resultType="DTO.office_DTO">
-		select oidx, officename, mname, mhp, otel, memail, opost, oaddress from office where officename like concat('%',#{search},'%') and oview = 'Y' order by odate desc
+		select oidx, officename, mname, mhp, otel, memail, opost, oroad, oaddress from office where officename like concat('%',#{search},'%') and oview = 'Y' order by odate desc
 	</select>
 	
 	<update id="delete_office" parameterType="String">
