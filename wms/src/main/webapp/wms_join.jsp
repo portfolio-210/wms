@@ -17,7 +17,7 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./css/bootstrap.css?v=1">
     <link rel="stylesheet" href="./css/default.css?v=20241124">
-    <script src="./js/admin_ship.js?v=<%=sf.format(today)%>"></script>
+    <script src="./js/wms_join.js?v=<%=sf.format(today)%>"></script>
 </head>
 <body style="position: relative;">
 
@@ -116,7 +116,7 @@
             </div>
             <div class="mb-3" style="display: flex; flex-direction: row; align-items: center; justify-content: center;">
             <button type="submit" class="btn btn-primary font12" style="width: 30%; height: 40px; margin-right: 10px;">신청하기</button>   
-            <button type="button" class="btn btn-secondary font12" style="width: 30%; height: 40px;" onclick="location.href='./index.jsp'">취소하기</button>  
+            <button type="button" class="btn btn-secondary font12" style="width: 30%; height: 40px;" onclick="location.href='./wms_login.jsp'">취소하기</button>  
             </div>   
             <div class="mb-3 font14">
                 ※ 회원가입 후 최고관리자가 승인해야만 로그인이 처리 됩니다.<br>

@@ -31,70 +31,52 @@ public class member_Controller implements security {
 	@Autowired
 	private member_service ms;
 	
-	PrintWriter pw = null;
+	String output = null;
+	javascript js = new javascript();
+	
 	
 	
 	// 회원가입
 	@PostMapping("/joinok.do")
-	public String joinok(@ModelAttribute("join") member_DTO dto,
-						HttpServletResponse res)throws Exception {	
-
-		PrintWriter pw = null;	
-		res.setContentType("text/html;characterset=utf8");
+	public String joinok(@ModelAttribute("join") member_DTO dto,Model m)throws Exception {	
 	
 		// mspot 값이 "N"이라면 "본사"로 변경
 	    if ("N".equals(dto.getMspot())) {
 	        dto.setMspot("본사");
 	    }
-		
-		
-		//md5 part
+		//md5
 		String userpw = dto.getMpass();	
 		StringBuilder repass = secode(userpw);
 		dto.setMpass(repass.toString());
 		
 		try {
 			int result = ms.member_join(dto);
-			pw = res.getWriter();
 				if(result > 0) {
-				pw.print("<script>"
-						+ "alert('정상적으로 회원가입이 완료 되었습니다.');"
-						+ "location.href='/index.jsp';"
-						+ "</script>");
+					this.output=this.js.ok("정상적으로 회원가입이 완료 되었습니다.", "./wms_login.jsp");
 				}	
 				else {
-					pw.print("<script>"
-							+ "alert('회원가입에 실패하였습니다. 다시 시도해 주세요.')"
-							+ "history.go(-1);"
-							+ "</script>");
+					this.output=this.js.no("회원가입에 실패하였습니다. 다시 시도해 주세요.");
 				}
 		} 
 		catch (Exception e) {
-			pw = res.getWriter();
-			pw.print("<script>"
-					+ "alert('데이터 오류로 인하여 가입이 되지 않습니다. 다시 시도해 주세요');"
-					+ "history.go(-1);"
-					+ "</script>");
+			this.output=this.js.no("데이터 오류로 인하여 가입이 되지 않습니다. 다시 시도해 주세요");
 		}
-		finally {
-			pw.close();
-		}
-		return null;
+		m.addAttribute("output", output);
+		return "output";
 	}
 	
 
 	// 아이디 중복체크
 	@CrossOrigin("*")
 	@PostMapping("/idcheck.do")
-	public String idcheck(@RequestParam("mid") String mid, HttpServletResponse res) throws Exception {	
+	public String idcheck(@RequestParam("mid") String mid, 
+			HttpServletResponse res) throws Exception {	
 				
 		PrintWriter pw = res.getWriter();
 		String result ="ok";
 		if(mid.equals("")) {
-			System.out.println("값이 없음");
 		}
 		else {
-			// DB의 값을 검토하는 구간
 			result = ms.search_id(mid);
 			System.out.println("중복체크"+result);
 			pw.print(result);
@@ -104,95 +86,91 @@ public class member_Controller implements security {
 	}
 
 	
-	
 	// 로그인 
     @PostMapping("/loginok.do")
     public String loginok(@RequestParam("mid") String mid, 
     						@RequestParam("mpass") String mpass,
     						@RequestParam(value = "local_id", required = false) String local_id,
-    						ServletResponse res, 
-    						HttpServletRequest req) {
-    	
-        res.setContentType("text/html;charset=utf-8"); 
+    						HttpServletRequest req,
+    						Model m) {
         
         List<member_DTO> member_dto = ms.login_id(mid);
         
         if (member_dto.size() == 0) { 
-            System.out.println("회원정보가 없음");
         } else {
-            System.out.println(member_dto.get(0).getMid());
-
-            
-            
-            try {
-            	
-            	// 로그인 pw 보안
-                this.pw = res.getWriter();
-                StringBuilder repass = secode(mpass);  
-
-                if (member_dto.get(0).getMpass().equals(repass.toString())) {   
-      	
-                	/*
-                	// 세션 설정
-                    HttpSession session = req.getSession();
-                    session.setAttribute("id", member_dto.get(0).getMid());
-                    session.setAttribute("name", member_dto.get(0).getMname());
-                    session.setAttribute("email", member_dto.get(0).getMemail());                    
-                    */
-                    // 로컬스토리지 처리
-                    if (local_id == null) {
-                        this.pw.print("<script>"
-                        				+ "window.localStorage.removeItem('mid');"
-                        				+ "</script>");
-                    } else {
-                        this.pw.print("<script>"
-                        				+ "window.localStorage.setItem('mid', '" + mid + "');"
-                        				+ "</script>");
-                    }
-                    
-                    this.pw.print("<script>"
-                    		+ "alert('로그인되었습니다. 환영합니다');"
-                    		+ "location.href='./admin_main.jsp';"
-                    		+ "</script>");
-
-                } else {    // 로그인 실패
-                    this.pw.print("<script>"
-                    		+ "alert('아이디 및 패스워드를 다시 확인해주세요.');"
-                    		+ "history.go(-1);"
-                    		+ "</script>");
-                }
-
-            } catch (Exception e) {
-                this.pw.print("<script>"
-                		+ "alert('데이터 오류로 인하여 다시 시도해 주세요.');"
-                		+ "history.go(-1);"
-                		+ "</script>");
-            }
-        }
-        return null; 
+        try {
+            StringBuilder repass = secode(mpass);  // 로그인 pw 보안
+	            if (member_dto.get(0).getMpass().equals(repass.toString())) {   
+	                HttpSession session = req.getSession();
+	                session.setAttribute("id", member_dto.get(0).getMid());
+	                session.setAttribute("name", member_dto.get(0).getMname());
+	                session.setAttribute("email", member_dto.get(0).getMemail());      
+	                session.setAttribute("mpart", member_dto.get(0).getMpart());      
+	                session.setAttribute("mspot", member_dto.get(0).getMspot());      
+	                
+	                if (local_id == null) {
+	                    	this.output=this.js.script("window.localStorage.removeItem('mid')");
+	                } else {
+	                    	this.output=this.js.script("window.localStorage.setItem('mid', '" + mid + "')");
+	                }
+	                		this.output=this.js.ok("로그인되었습니다. 환영합니다","./wms_main.do");
+	            } 
+	            else {  
+	                	this.output=this.js.no("아이디 및 패스워드를 다시 확인해주세요.");
+	            }
+        } catch (Exception e) {
+            this.output=this.js.no("데이터 오류로 인하여 다시 시도해 주세요.");
+        	}
+    }
+        m.addAttribute("output", this.output);
+        return "output"; 
     }
 	
-	
+    
     // 메인페이지
-    @GetMapping("/admin_main.do")
+    @GetMapping("/wms_main.do")
     public String main(Model m, HttpServletRequest req) {    
-        // 세션에서 값 가져오기
+       
         HttpSession session = req.getSession();
-        
-        // 세션에 저장된 로그인 정보 가져오기
         String id = (String) session.getAttribute("id");
         String name = (String) session.getAttribute("name");
         String email = (String) session.getAttribute("email");
+        String mpart = (String) session.getAttribute("mpart");
+        String mspot = (String) session.getAttribute("mspot");
+        //System.out.println("세션 id="+id);
+        //System.out.println("세션 name="+name);
+        //System.out.println("세션 email="+email);
 
-        // 모델에 데이터 추가
         m.addAttribute("id", id);
         m.addAttribute("name", name);
         m.addAttribute("email", email);
 
-        return "./admin_main.jsp"; // JSP나 Thymeleaf 템플릿을 반환
+        return "wms_main"; 
     }
-	
-	
-	
-	
-}//
+    
+    
+	//로그아웃
+	@GetMapping("/logout.do")
+	public String logout(HttpServletRequest req, 
+						Model m) {
+
+		HttpSession session = req.getSession();
+		session.removeAttribute("id");
+		session.removeAttribute("name");
+		session.removeAttribute("email");
+		session.removeAttribute("mpart");
+		session.removeAttribute("mspot");
+		
+		try {
+			if (session.getAttribute("id") == null) {
+				this.output = this.js.ok("로그아웃 되었습니다","./wms_login.jsp");
+			} else {
+			    this.output = this.js.no("로그인 실패! 다시시도해주세요.");
+			}
+		} catch (Exception e) {
+				this.output = this.js.no("시스템 서버 오류로 인하여 다시 시도해주세요.");
+		} 
+		m.addAttribute("output", this.output);
+		return "output";
+	}	
+}//end

@@ -98,10 +98,7 @@ function login_check(){
     var repw = document.getElementById("repw");
 	var password = f1.mpass.value;// 비밀번호 영문+숫자
 
-	
-	
-	
-	
+
    		if(f1.mpart.value == "지점"){
 			
 			if(f1.mspot.value == "N"){

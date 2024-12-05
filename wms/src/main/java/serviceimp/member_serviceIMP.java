@@ -17,13 +17,13 @@ public class member_serviceIMP implements member_service {
 	// 회원가입
 	@Override
 	public int member_join(member_DTO dto) {
-		int result = mm.member_join(dto);	// 컨트롤 에서 받은 DTO내용을 mapper로 전달하는 역활
+		int result = mm.member_join(dto);	
 		return result;
 	}
 	
 	// 아이디 중복체크
 	@Override
-	public String search_id(String mid) {	// 아이디 중복체크 메소드
+	public String search_id(String mid) {	
 		String result = mm.search_id(mid);
 		return result;
 	}

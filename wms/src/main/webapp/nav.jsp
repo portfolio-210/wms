@@ -1,3 +1,19 @@
+<%
+	HttpSession sess = request.getSession();
+	String id = (String)sess.getAttribute("id");
+	String name = (String)sess.getAttribute("name");
+	String email = (String)sess.getAttribute("email");
+	String mpart = (String)sess.getAttribute("mpart");
+	String mspot = (String)sess.getAttribute("mspot");
+	
+	out.print("----세션값 참고하세요----");
+	out.print("id = "+ sess.getAttribute("id")+ "---");	//수원지점
+	out.print("name = "+sess.getAttribute("name")+ "---");	// 이름
+	out.print("email = "+sess.getAttribute("email")+ "---");	//이메일
+	out.print("mpart = "+sess.getAttribute("mpart")+ "---"); // 본사
+	out.print("mspot = "+sess.getAttribute("mspot")+ "---");	// 지점 이름
+%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="cr" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
   <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
@@ -54,7 +70,18 @@
         </div>
       </li>
     </ul>
-      <span style="color: white; margin-right: 5px;">[본사] 홍길동 님 환영합니다.</span>
-      <button class="btn btn-outline-success my-2 my-sm-0" type="button">로그아웃</button>
+    
+     <!-- <span style="color: white; margin-right: 5px;">[<%=mpart%>]&nbsp;&nbsp;<a href="#"><%=name%> (<%=id%>)</a> 님 환영합니다.</span> --> 
+     	<cr:if test="${sessionScope.mpart == '본사'}">
+    		<span style="color: white; margin-right: 5px;">[${mpart}]&nbsp;&nbsp;<a href="#">${name} (${id})</a> 님 환영합니다.</span>
+		</cr:if>
+
+		<cr:if test="${sessionScope.mpart == '지점'}">
+    		<span style="color: white; margin-right: 5px;">[${mspot}]&nbsp;&nbsp;<a href="#">${name} (${id})</a> 님 환영합니다.</span>
+		</cr:if>
+	
+	
+	
+      <button class="btn btn-outline-success my-2 my-sm-0" type="button" onclick="location.href='./logout.do'">로그아웃</button>
   </div>
 </nav>

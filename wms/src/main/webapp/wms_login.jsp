@@ -16,7 +16,7 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./css/bootstrap.css?v=1">
     <link rel="stylesheet" href="./css/default.css?v=20241124">
-    <script src="./js/index.js?v=<%=sf.format(today)%>"></script>
+    <script src="./js/wms_login.js?v=<%=sf.format(today)%>"></script>
 </head>
 <body style="position: relative;">
 
@@ -58,7 +58,7 @@
             </button>   
             </div>
             <div class="mb-3">
-            <button type="button" class="btn btn-secondary font12" style="width: 100%; height: 40px;" onclick="location.href='./admin_ship.jsp'">
+            <button type="button" class="btn btn-secondary font12" style="width: 100%; height: 40px;" onclick="location.href='./wms_join.jsp'">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-plus-fill" viewBox="0 0 16 16">
                     <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
                     <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5"/>
