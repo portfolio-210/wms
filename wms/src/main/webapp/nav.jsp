@@ -6,12 +6,13 @@
 	String mpart = (String)sess.getAttribute("mpart");
 	String mspot = (String)sess.getAttribute("mspot");
 	
-	out.print("----세션값 참고하세요----");
-	out.print("id = "+ sess.getAttribute("id")+ "---");	//수원지점
-	out.print("name = "+sess.getAttribute("name")+ "---");	// 이름
-	out.print("email = "+sess.getAttribute("email")+ "---");	//이메일
-	out.print("mpart = "+sess.getAttribute("mpart")+ "---"); // 본사
-	out.print("mspot = "+sess.getAttribute("mspot")+ "---");	// 지점 이름
+	out.print("　　　--세션값 참고하세요--　　　");
+	out.print("id("+ sess.getAttribute("id")+ ")　　");	//수원지점
+	out.print("name("+sess.getAttribute("name")+ ")　　");	// 이름
+	out.print("email("+sess.getAttribute("email")+ ")　　");	//이메일
+	out.print("mpart("+sess.getAttribute("mpart")+ ")　　"); // 본사
+	out.print("mspot("+sess.getAttribute("mspot")+ ")　　");	// 지점 이름
+	out.print("　>> 앞에있는값이 세션 id값입니다!!");
 %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="cr" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
