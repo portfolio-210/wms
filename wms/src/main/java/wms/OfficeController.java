@@ -20,7 +20,7 @@ import jakarta.servlet.ServletResponse;
 import jakarta.servlet.http.HttpServletResponse;
 import service.OfficeService;
 
-@ComponentScan(basePackages = {"DTO","service","serviceimp"})
+@ComponentScan(basePackages = {"wms.dto","wms.service","wms.serviceimp"})
 @Controller
 public class OfficeController {
 	PrintWriter pw = null;
