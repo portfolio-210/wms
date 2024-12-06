@@ -21,7 +21,7 @@ function search_office(){
 
 		else {
 			frm.method="post";
-			frm.action="../office/office_main.do";
+			frm.action="../office/officeMain.do";
 			frm.submit();
 		}
 	}
@@ -31,7 +31,7 @@ function search_office(){
 function searchAll_office(){
 	search_word.value = "";
 	frm.method="post";
-	frm.action="../office/office_main.do";
+	frm.action="../office/officeMain.do";
 	frm.submit();
 }
 
@@ -55,9 +55,35 @@ function delete_office(oidx){
 //지점명 중복체크 버튼 클릭 시 적용 함수
 function officenameCheck(){
 	var officename = frm.officename.value;
-	officename = officename.replaceAll(" ", "");
-	
-	//ajax로 중복 이름 있는 지 확인
+	if(officename == ""){
+		alert("등록할 지점을 입력해주세요.");
+		frm.officename.focus();
+	}
+	else {
+		//입력한 지점 이름 내 공백 체크
+		officename = officename.replaceAll(" ", "");
+		if(officename.length == 0){
+			alert("입력한 지점 이름을 다시 한번 확인해주세요.");
+		}
+		else {
+			//http : 전송하는 값, result : Back-end에서 받은 응답을 저장하는 값
+			var http, result;
+			http = new XMLHttpRequest();
+			http.onreadystatechange = function(){
+				if(http.readyState == 4 && http.status == 200){
+					result = this.response;
+					if(result == "0"){
+						alert("등록 가능한 지점입니다.");
+					} else {
+						alert("해당 지점은 이미 등록되어 있습니다.");
+					}
+				}
+			}
+		}
+		http.open("post", "../office/officenameCheck.do", true);
+		http.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+		http.send("officename=" + officename);
+	}
 }
 
 //아이디 찾기 버튼 클릭 시 적용 함수
