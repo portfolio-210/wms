@@ -78,7 +78,7 @@
      </div>
       <div class="mb-3" style="text-align: right;">
       <button type="button" class="btn btn-danger font12" style="width: 100px; height: 40px; margin-right: 5px;">거래처 등록</button> 
-      <button type="button" class="btn btn-dark font12" style="width: 100px; height: 40px;">취소하기</button> 
+      <button type="button" class="btn btn-dark font12" style="width: 100px; height: 40px;" onclick="location.href='./wms_account.jsp'">취소하기</button> 
       </div>
     </div>
     </div>

@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 
-<mapper namespace="wms.mapper.member_mapper">
+<mapper namespace="wms.mapper.MemberMapper">
 
  	<!-- 회원기입 -->
 	<insert id="member_join" parameterType="String">
@@ -22,7 +22,7 @@
 	
 	
 	<!-- 로그인 -->
-	 <select id="login_id" resultType="DTO.member_DTO"> 
+	 <select id="login_id" resultType="dto.MemberDTO"> 
 		select mpart, mspot, mid, mpass, mname, memail from member where mid=#{mid}
 	</select>
 	 

@@ -66,7 +66,7 @@
         </ul>
       </div>
       <div class="mb-3" style="text-align: right;">
-      <button type="button" class="btn btn-danger font12" style="width: 100px; height: 40px;">거래처 등록</button> 
+      <button type="button" class="btn btn-danger font12" style="width: 100px; height: 40px;" onclick="location.href='./account_upload.jsp'">거래처 등록</button> 
       </div>
     </div>
   </div>

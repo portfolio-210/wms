@@ -14,22 +14,22 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import DTO.member_DTO;
+import dto.MemberDTO;
 import jakarta.annotation.Resource;
 import jakarta.servlet.ServletResponse;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import service.member_service;
+import service.MemberService;
 
 @ComponentScan(basePackages = "DTO,service,serviceimp")
 @Controller
-public class member_Controller implements security {
+public class MemberController implements security {
 	@Resource(name="memberdto")
-	member_DTO dto;
+	MemberDTO dto;
 	
 	@Autowired
-	private member_service ms;
+	private MemberService ms;
 	
 	String output = null;
 	javascript js = new javascript();
@@ -38,7 +38,7 @@ public class member_Controller implements security {
 	
 	// 회원가입
 	@PostMapping("/joinok.do")
-	public String joinok(@ModelAttribute("join") member_DTO dto,Model m)throws Exception {	
+	public String joinok(@ModelAttribute("join") MemberDTO dto,Model m)throws Exception {	
 	
 		// mspot 값이 "N"이라면 "본사"로 변경
 	    if ("N".equals(dto.getMspot())) {
@@ -94,7 +94,7 @@ public class member_Controller implements security {
     						HttpServletRequest req,
     						Model m) {
         
-        List<member_DTO> member_dto = ms.login_id(mid);
+        List<MemberDTO> member_dto = ms.login_id(mid);
         
         if (member_dto.size() == 0) { 
         } else {
@@ -128,7 +128,7 @@ public class member_Controller implements security {
 	
     
     // 메인페이지
-    @GetMapping("/wms_main.do")
+    @GetMapping("/wmsMain.do")
     public String main(Model m, HttpServletRequest req) {    
        
         HttpSession session = req.getSession();
@@ -145,7 +145,7 @@ public class member_Controller implements security {
         m.addAttribute("name", name);
         m.addAttribute("email", email);
 
-        return "wms_main"; 
+        return "wmsMain"; 
     }
     
     

@@ -12,19 +12,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import DTO.config_DTO;
+import dto.ConfigDTO;
 import jakarta.annotation.Resource;
-import service.config_service;
+import service.ConfigService;
 
 @ComponentScan(basePackages = {"DTO","service","serviceimp"})
 @Controller
-public class config_controller {
+public class ConfigController {
 	
 			@Resource(name="config_dto")
-			config_DTO cd;
+			ConfigDTO cd;
 			
 			@Autowired
-			config_service cs;
+			ConfigService cs;
 			
 			@PostMapping("/config/config_main.do")
 			public String search(@RequestParam("part1") String part1, @RequestParam("part2") String part2, @RequestParam("search") String search, 
@@ -33,7 +33,7 @@ public class config_controller {
 				keycode.put("part1",part1);
 				keycode.put("part2",part2);
 				keycode.put("search",search);
-				List<config_DTO> all = cs.all(keycode);
+				List<ConfigDTO> all = cs.all(keycode);
 				
 				
 				m.addAttribute("members", all); // 'm'을 사용하여 모델에 추가
@@ -42,7 +42,7 @@ public class config_controller {
 			
 			@GetMapping("/config/config_main.do")
 		    public String showMembers(Model m) {
-		        List<config_DTO> members = cs.searchall(); // 전체 멤버 가져오기
+		        List<ConfigDTO> members = cs.searchall(); // 전체 멤버 가져오기
 		        m.addAttribute("members", members); // 모델에 추가
 		        return null; // JSP 페이지 이름 반환
 		    }

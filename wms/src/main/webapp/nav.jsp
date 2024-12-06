@@ -18,7 +18,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
   <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-  <a class="navbar-brand" href="#">ADMINISTRATOR</a>
+  <a class="navbar-brand" href="/wmsMain.do">ADMINISTRATOR</a>
 
   <div class="collapse navbar-collapse" id="navbarsExampleDefault">
     <ul class="navbar-nav mr-auto">
@@ -64,9 +64,9 @@
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">환경설정</a>
         <div class="dropdown-menu">
-          <a class="dropdown-item" href="#">관리자 현황</a>
+          <a class="dropdown-item" href="../config/config_main.do"">관리자 현황</a>
           <a class="dropdown-item" href="#">지점 현황</a>
-          <a class="dropdown-item" href="#">거래처 현황</a>
+          <a class="dropdown-item" href="../account/account.jsp">거래처 현황</a>
           <a class="dropdown-item" href="#">팔레트 현황</a>
         </div>
       </li>

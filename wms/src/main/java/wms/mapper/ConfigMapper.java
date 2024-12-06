@@ -6,9 +6,9 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
-public interface config_mapper {
+public interface ConfigMapper {
 
-	List<DTO.config_DTO> all(Map<String, String> keycode);
-	List<DTO.config_DTO> searchall();
+	List<dto.ConfigDTO> all(Map<String, String> keycode);
+	List<dto.ConfigDTO> searchall();
 	
 }

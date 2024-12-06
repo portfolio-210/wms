@@ -13,25 +13,25 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import DTO.office_DTO;
+import dto.OfficeDTO;
 import jakarta.annotation.Resource;
 import jakarta.servlet.ServletResponse;
-import service.office_service;
+import service.OfficeService;
 
 @ComponentScan(basePackages = {"DTO","service","serviceimp"})
 @Controller
-public class office_Controller {
+public class OfficeController {
 
 	@Resource(name="office_DTO")
-	office_DTO odto;
+	OfficeDTO odto;
 	
 	@Autowired
-	office_service os;
+	OfficeService os;
 	
 	//전체 지점 현황 페이지 출력
 		@GetMapping("/office/office_main.do")
 		public String office_main(Model m) {
-			List<office_DTO> all = os.office_list();
+			List<OfficeDTO> all = os.office_list();
 			m.addAttribute("all", all);
 			m.addAttribute("total", all.size());
 			return null;
@@ -40,7 +40,7 @@ public class office_Controller {
 		//검색 지점 현황 페이지 출력
 		@PostMapping("/office/office_main.do")
 		public String search_ok(@RequestParam("search") String search, Model m) {
-			List<office_DTO> searchAll = os.search_office(search);
+			List<OfficeDTO> searchAll = os.search_office(search);
 			m.addAttribute("all", searchAll);
 			return null;
 		}

@@ -5,18 +5,18 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import DTO.member_DTO;
-import service.member_service;
+import dto.MemberDTO;
+import service.MemberService;
 @Service
-public class member_serviceIMP implements member_service {
+public class MemberServiceimp implements MemberService {
 
 	@Autowired
-	private wms.mapper.member_mapper mm;
+	private wms.mapper.MemberMapper mm;
 	
 	
 	// 회원가입
 	@Override
-	public int member_join(member_DTO dto) {
+	public int member_join(MemberDTO dto) {
 		int result = mm.member_join(dto);	
 		return result;
 	}
@@ -31,8 +31,8 @@ public class member_serviceIMP implements member_service {
 	
 	// 로그인 파트
 	@Override
-	public List<member_DTO> login_id(String mid){
-		List<member_DTO> member_dto = mm.login_id(mid);
+	public List<MemberDTO> login_id(String mid){
+		List<MemberDTO> member_dto = mm.login_id(mid);
 		return member_dto;
 		}
 	

@@ -5,13 +5,13 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import DTO.office_DTO;
-import service.office_service;
+import dto.OfficeDTO;
+import service.OfficeService;
 
 @Service
-public class office_serviceImp implements office_service{
+public class OfficeServiceimp implements OfficeService{
 	@Autowired
-	wms.mapper.office_mapper om;
+	wms.mapper.OfficeMapper om;
 	
 	
 	//지점 삭제
@@ -23,15 +23,15 @@ public class office_serviceImp implements office_service{
 	
 	//검색한 지점 목록 조회
 	@Override
-	public List<office_DTO> search_office(String search) {
-		List<office_DTO> result = om.search_office(search);
+	public List<OfficeDTO> search_office(String search) {
+		List<OfficeDTO> result = om.search_office(search);
 		return result;
 	}
 	
 	//지점 현황 전체 목록 조회
 	@Override
-	public List<office_DTO> office_list() {
-		List<office_DTO> all = om.office_list();
+	public List<OfficeDTO> office_list() {
+		List<OfficeDTO> all = om.office_list();
 		return all;
 	}
 }
