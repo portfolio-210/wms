@@ -14,4 +14,7 @@
 		update office set oview = 'N' where oidx = #{oidx}
 	</update>
 	
+	<select id="check_officename" parameterType="String" resultType="String">
+		select count(*) as cnt from office where officename like concat('%',#{officename},'%') and oview = 'Y';
+	</select>
 </mapper>
