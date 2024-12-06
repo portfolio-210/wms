@@ -1,5 +1,22 @@
+
 <%
-	HttpSession sess = request.getSession();
+	HttpSession sess = request.getSession(false);
+	
+if (session == null || session.getAttribute("id") == null || 
+	session.getAttribute("name") == null || 
+	session.getAttribute("email") == null || 
+	session.getAttribute("mpart") == null || 
+	session.getAttribute("mspot") == null) {
+	
+%>
+	<script>
+	alert('비정상적인 접근입니다. 로그인 페이지로 이동합니다.');
+    location.href = '/wmsLogin.jsp';
+	</script>
+<%
+	return; 
+	}
+
 	String id = (String)sess.getAttribute("id");
 	String name = (String)sess.getAttribute("name");
 	String email = (String)sess.getAttribute("email");
@@ -14,6 +31,7 @@
 	out.print("mspot("+sess.getAttribute("mspot")+ ")　　");	// 지점 이름
 	out.print("　>> 앞에있는값이 세션 id값입니다!!");
 %>
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="cr" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -83,6 +101,6 @@
 	
 	
 	
-      <button class="btn btn-outline-success my-2 my-sm-0" type="button" onclick="location.href='./logout.do'">로그아웃</button>
+      <button class="btn btn-outline-success my-2 my-sm-0" type="button" onclick="location.href='/logout.do'">로그아웃</button>
   </div>
 </nav>

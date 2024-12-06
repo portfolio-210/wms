@@ -32,7 +32,7 @@
             <ul class="ul-1">
                 <li class="num_font13_bold">소 속</li>
                 <li style="width: 85%; display: flex; flex-direction: row;">
-                    <select name="mpart" id="mpart" style="width: 100px; height: 40px; margin-right: 5px;" class="form-control font12">
+                    <select name="mpart" id="mpart" style="width: 100px; height: 40px; margin-right: 5px;" class="form-control font12" onchange="part_click()">
                         <option value="본사">본사</option>
                         <option value="지점">지점</option>
                     </select>
@@ -116,7 +116,7 @@
             </div>
             <div class="mb-3" style="display: flex; flex-direction: row; align-items: center; justify-content: center;">
             <button type="submit" class="btn btn-primary font12" style="width: 30%; height: 40px; margin-right: 10px;">신청하기</button>   
-            <button type="button" class="btn btn-secondary font12" style="width: 30%; height: 40px;" onclick="location.href='./wms_login.jsp'">취소하기</button>  
+            <button type="button" class="btn btn-secondary font12" style="width: 30%; height: 40px;" onclick="location.href='./wmsLogin.jsp'">취소하기</button>  
             </div>   
             <div class="mb-3 font14">
                 ※ 회원가입 후 최고관리자가 승인해야만 로그인이 처리 됩니다.<br>

@@ -10,7 +10,7 @@
 	</insert>
 
 	 <!-- 
-		insert into member values ('0', '최고관리자', '최고관리자', '최고관리자', '최고관리자', 'admin', 'admin', 'admin@webmaster.com', '01012345678','승인', now())
+		insert into member values ('0','본사', '본사', '최고관리자', '임원', 'admin','cfc8f995650ff6bddc783357f12232', 'admin@webmaster.com', '01000000000', '근무',now());
 	 -->
 	 
 	 
@@ -23,7 +23,7 @@
 	
 	<!-- 로그인 -->
 	 <select id="login_id" resultType="dto.MemberDTO"> 
-		select mpart, mspot, mid, mpass, mname, memail from member where mid=#{mid}
+		select mpart, mspot, mid, mpass, mname, memail, approve from member where mid=#{mid}
 	</select>
 	 
 
