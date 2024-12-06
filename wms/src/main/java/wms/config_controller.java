@@ -26,7 +26,7 @@ public class config_controller {
 			@Autowired
 			config_service cs;
 			
-			@PostMapping("config/config_main.do")
+			@PostMapping("/config/config_main.do")
 			public String search(@RequestParam("part1") String part1, @RequestParam("part2") String part2, @RequestParam("search") String search, 
                     Model m) {
 				Map<String, String> keycode = new HashMap<>();
@@ -40,11 +40,11 @@ public class config_controller {
 				return null;
 			}
 			
-			@GetMapping("/config_main.do")
+			@GetMapping("/config/config_main.do")
 		    public String showMembers(Model m) {
 		        List<config_DTO> members = cs.searchall(); // 전체 멤버 가져오기
 		        m.addAttribute("members", members); // 모델에 추가
-		        return "config/config_main"; // JSP 페이지 이름 반환
+		        return null; // JSP 페이지 이름 반환
 		    }
 			
 

@@ -43,10 +43,10 @@ function getFormInfo() {
 }
 
 function searchall(){
-	
+	//document.getElementById("searchKeyword").value = "";
 	var frc = document.createElement("form");
 	       frc.method = "get"; // 폼 메서드 설정
-	       frc.action = "/config_main.do"; // 폼 액션 설정
+	       frc.action = "/config/config_main.do"; // 폼 액션 설정
 	       // 폼을 body에 추가
 	       document.body.appendChild(frc);
 

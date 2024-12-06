@@ -30,6 +30,14 @@ select * from member ORDER BY midx DESC
 
 </select>
  
+ 
+ <update id="update" parameterType="DTO.config_DTO">
+ 
+ 	UPDATE member
+    SET approve = #{part3}
+    WHERE midx = #{midx}
+ 
+ </update>
 
 
 </mapper>

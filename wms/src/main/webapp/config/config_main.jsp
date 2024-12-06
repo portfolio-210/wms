@@ -8,7 +8,7 @@
 <!-- Nav -->
 <%@ include file="../nav.jsp"%>   
 
-<script src="./config.js"></script>
+<script src="./config.js?v="<%= sf.format(today) %>></script>
 
 <main role="main" style="height: 850px;">
 
@@ -38,7 +38,7 @@
 		            <option value="3">연락처</option>
 		        </select>
 		        <input type="text" id="searchKeyword" name="search" style="width: 200px; height: 40px;" class="form-control font12" placeholder="검색어를 입력하세요">
-		        <button type="submit" onclick="getFormInfo()" class="btn btn-primary font12" style="width: 70px; height: 40px; margin-left: 10px; margin-right: 10px;">검색</button>
+		        <button type="button" onclick="getFormInfo()" class="btn btn-primary font12" style="width: 70px; height: 40px; margin-left: 10px; margin-right: 10px;">검색</button>
 		        <button type="button" onclick="searchall()" class="btn btn-dark font12" style="width: 70px; height: 40px; margin-left: 10px; margin-right: 10px;">전체</button>
 		    </li>
 		</ul>
@@ -59,9 +59,9 @@
               </tr>
             </thead>
             <tbody>
-            <c:forEach var="member" items="${members}">
+            <c:forEach var="member" items="${members}" varStatus="status">
               <tr align="center">
-                <td></td>
+                <td>${status.index + 1}</td>
                 <td>${member.mpart}</td>
                 <td>${member.mid}</td>
                 <td>${member.mname}</td>
@@ -69,22 +69,21 @@
                 <td>${member.memail}</td>
                 <td>${member.mhp}</td>
                 <td>
-                    <select style="width: 80px; height: 30px;" class="form-control font12">
-                        <option>대기</option>
-                        <option>근무</option>
-                        <option>휴직</option>
-                        <option>퇴사</option>
+                    <select name="part3" id="part3" style="width: 80px; height: 30px;" class="form-control font12">
+                        <option value="대기">대기</option>
+                        <option value="근무">근무</option>
+                        <option value="휴직">휴직</option>
+                        <option value="퇴사">퇴사</option>
                     </select>
                 </td>
                 <td style="text-align: center;">
-                    <button type="button" class="btn btn-dark font12" style="width: 50px; height: 30px; margin-right: 10px;">적용</button> 
+                    <button type="button" class="btn btn-dark font12" style="width: 50px; height: 30px; margin-right: 10px;" onclick="do()">적용</button> 
                 </td>
               </tr>            
             </tbody>
             </c:forEach>
           </table>
      </div>
-     </form>
      <div class="mb-3">
         <ul class="pageing">
           <li>1</li>
