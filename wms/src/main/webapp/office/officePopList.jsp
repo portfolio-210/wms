@@ -1,36 +1,11 @@
-<!doctype html>
-<html lang="ko">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Hugo 0.101.0">
-    <title>이행 물류 시스템</title>
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script>window.jQuery || document.write('<script src="../assets/js/vendor/jquery.slim.min.js"><\/script>')</script>
-    <script src="../js/bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" href="../css/bootstrap.css?v=1">
-    <link rel="stylesheet" href="../css/default.css?v=20241125">  
-    <link rel="stylesheet" href="../css/jumbotron.css">  
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-      }
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="cr" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-    </style>
-  </head>
-  <body style="padding: 0 !important;">
+<!-- Header -->
+<cr:import url="../header.jsp"/>
+
 <main role="main" style="height: 850px;">
   <div class="container">
     <div>
@@ -65,18 +40,22 @@
               </tr>
             </thead>
             <tbody>
+            <!-- 지점 관리자 리스트 출력 시작 -->
+            <cr:forEach var="member" items="${all}" varStatus="idx">
               <tr align="center">
-                <td>1</td>
-                <td>hong</td>
-                <td>홍길동</td>
-                <td>과장</td>
-                <td>hong@nate.com</td>
-                <td>010-1234-5678</td>
-                <td>근무</td>
+                <td>${total - idx.index}</td>
+                <td>${member.mid}</td>
+                <td>${member.mname}</td>
+                <td>${member.mjob}</td>
+                <td>${member.memail}</td>
+                <td>${member.mhp}</td>
+                <td>${member.approve}</td>
                 <td style="text-align: center;">
-                    <button type="button" class="btn btn-dark font12" style="width: 50px; height: 30px; margin-right: 10px;">적용</button> 
+                    <button type="button" onclick="apply_member()" class="btn btn-dark font12" style="width: 50px; height: 30px; margin-right: 10px;">적용</button> 
                 </td>
               </tr>
+            </cr:forEach> 
+            <!-- 지점 관리자 리스트 출력 끝 -->
             </tbody>
           </table>
      </div>
@@ -95,8 +74,7 @@
   </div>
 </main>
 
-<footer class="container" style="border-top:1px solid black; height: 30px; padding-top: 10px;">
-  <p style="height: 30px; line-height: 30xp;">Copyright &copy; 이행 물류 시스템 Company 2024 All Rights Reserved.</p>
-</footer>
-  </body>
-</html>
+<!-- 스크립트 자동 업데이트 -->
+<script src="../js/office.js?=${sf.format(today)}"></script>
+<!-- Footer -->
+<cr:import url="../footer.jsp" />

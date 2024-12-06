@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import dto.MemberDTO;
 import dto.OfficeDTO;
 import jakarta.annotation.Resource;
 import jakarta.servlet.ServletResponse;
@@ -121,5 +122,15 @@ public class OfficeController {
 	}
 	
 	
+//officePopList.jsp Controller
+	//지점 관리자 목록 출력
+	@GetMapping("/office/officePopList.do")
+	public String office_poplist(Model m) {
+		List<MemberDTO> all = os.poplist_member();
+		m.addAttribute("all", all);
+		m.addAttribute("total", all.size());
+		
+		return null;
+	}
 	
 }

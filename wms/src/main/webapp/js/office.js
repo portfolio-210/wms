@@ -1,4 +1,4 @@
-//office_main.jsp
+//officeMain.jsp
 var search_word = document.getElementById("search");
 
 //검색 버튼 클릭 시 적용 함수
@@ -50,7 +50,7 @@ function delete_office(oidx){
 }
 
 
-//office_insert.jsp
+//officeInsert.jsp
 
 //지점명 중복체크 버튼 클릭 시 적용 함수
 function officenameCheck(){
@@ -109,15 +109,25 @@ function insert_check(){
 	} else if(oaddress.value == ""){
 		alert("상세 주소를 입력해주세요.");
 		oaddress.focus();
+	} else {
+		//대표 연락처 "-" 포함 되도록 검사
 	}
-	
-	
 }
 
 //취소하기 버튼 클릭 시 적용 함수
 function cancel(){
-	frm.reset();
+	if(confirm("해당 지점 등록을 취소 하시겠습니까?")){
+		frm.reset();
+		location.href="../office/officeMain.do";
+	}
 }
+
+
+//officePopList.jsp
+function apply_member(){
+	
+}
+
 
 //주소 찾기 카카오 API 연동
 // 우편번호 찾기 화면을 넣을 element

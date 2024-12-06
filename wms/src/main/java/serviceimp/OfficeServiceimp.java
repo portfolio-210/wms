@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import dto.MemberDTO;
 import dto.OfficeDTO;
 import service.OfficeService;
 
@@ -39,6 +40,13 @@ public class OfficeServiceimp implements OfficeService{
 	@Override
 	public String check_officename(String officename) {
 		String result = om.check_officename(officename);
+		return result;
+	}
+	
+	//팝업창 지점 관리자 리스트 출력
+	@Override
+	public List<MemberDTO> poplist_member() {
+		List<MemberDTO> result = om.poplist_member();
 		return result;
 	}
 }

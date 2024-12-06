@@ -29,7 +29,7 @@
 					    <li class="num_font13_bold">지점 담당자</li>
 					    <li style="width: 85%; display: flex; flex-direction: row;">
 					        <input type="text" name="mname" style="width: 160px; height: 40px; margin-right: 5px;" class="form-control font12" placeholder="지점 담당자 선택" readonly>
-					        <button type="button" onclick="location.href='./pop_list.jsp'" class="btn btn-secondary font12" style="width: 100px; height: 40px;">아이디 찾기</button>&nbsp;&nbsp;<font style="font-size: 12px; color: red;">※ 해당 지점 담당자 선택시 추후 변경이 가능 합니다.</font>
+					        <button type="button" onclick="location.href='./officePopList.do'" class="btn btn-secondary font12" style="width: 100px; height: 40px;">아이디 찾기</button>&nbsp;&nbsp;<font style="font-size: 12px; color: red;">※ 해당 지점 담당자 선택시 추후 변경이 가능 합니다.</font>
 					    </li>
 					    <li></li>
 					    <li></li>

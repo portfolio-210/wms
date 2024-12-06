@@ -17,4 +17,8 @@
 	<select id="check_officename" parameterType="String" resultType="String">
 		select count(*) as cnt from office where officename like concat('%',#{officename},'%') and oview = 'Y';
 	</select>
+	
+	<select id="poplist_member" resultType="dto.MemberDTO">
+		select midx, mid, mname, mjob, memail, mhp, approve from member where mpart = '지점' order by midx desc;
+	</select>
 </mapper>
