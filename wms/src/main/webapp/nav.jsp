@@ -66,7 +66,7 @@
         <div class="dropdown-menu">
           <a class="dropdown-item" href="../config/config_main.do"">관리자 현황</a>
           <a class="dropdown-item" href="#">지점 현황</a>
-          <a class="dropdown-item" href="../account/account.jsp">거래처 현황</a>
+          <a class="dropdown-item" href="../account/accountMain.jsp">거래처 현황</a>
           <a class="dropdown-item" href="#">팔레트 현황</a>
         </div>
       </li>

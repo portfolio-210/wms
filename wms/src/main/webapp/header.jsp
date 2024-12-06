@@ -22,7 +22,16 @@
     <script src="/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="/css/bootstrap.css?v=1">
     <link rel="stylesheet" href="/css/default.css?v=20241124">  
-    <link rel="stylesheet" href="/css/jumbotron.css">  
+    <link rel="stylesheet" href="/css/jumbotron.css"> 
+    
+    <!-- 스크립트 모아 지정하는 구간!! -->
+     <script src="./js/account.js?v=<%=sf.format(today)%>"></script>
+    
+    
+    
+     
+    <!--  -->
+    
     <style>
       .bd-placeholder-img {
         font-size: 1.125rem;

@@ -9,7 +9,7 @@ function logincheck(){
 	}
 	else{
 		f.method="post";
-		f.action="./loginok.do"
+		f.action="./wmsLoginok.do"
 		return;
 	}
 }
