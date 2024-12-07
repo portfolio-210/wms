@@ -42,7 +42,6 @@ function modify_office(){
 
 //삭제 버튼 클릭 시 적용 함수
 function delete_office(oidx){
-	console.log(oidx);
 	var key = window.btoa("wms.test");
 	if(confirm("해당 게시물을 삭제하시겠습니까?\n삭제된 데이터는 복구하지 못합니다.")){
 		location.href="../office/office_delete.do?oidx=" + window.btoa(oidx) + "&key=" + key;
@@ -111,6 +110,9 @@ function insert_check(){
 		oaddress.focus();
 	} else {
 		//대표 연락처 "-" 포함 되도록 검사
+		
+		//부가 유효 검사 후 submit
+		frm.action="../office/office_insert.do";
 	}
 }
 
@@ -124,9 +126,69 @@ function cancel(){
 
 
 //officePopList.jsp
-function apply_member(){
-	
+
+//팝업 관리자 검색
+function search_member(){
+	var part = frm.part.value;
+	var search = frm.search;
+	if(search.value == ""){
+		if(part == "이름"){
+			alert("찾으실 담당자 이름을 입력해주세요.");
+			search.focus();
+		} else if(part == "아이디"){
+			alert("찾으실 담당자 아이디를 입력해주세요.");
+			search.focus();
+		} else if(part == "연락처"){
+			alert("찾으실 담장자의 연락처를 입력해주세요.");
+			search.focus();
+		}
+	}
+	else {
+		//검색어를 입력한 경우
+		search = search.value.replaceAll(" ", "");
+		if(search.length == 0){
+			alert("검색어를 다시 한 번 확인해주세요.");
+		}
+		else {
+			frm.method="post";
+			frm.action="/office/officePopList.do";
+			frm.submit();
+		}
+	}
 }
+
+//팝업 관리자 전체 출력 버튼
+function searchAll_member(){
+	frm.search.value = "";
+	frm.method="post";
+	frm.action="../office/officePopList.do";
+	frm.submit();
+}
+
+//팝업 관리자 적용 버튼 클릭
+function apply_member(midx){
+	console.log(midx);
+
+	//http : 전송하는 값, result : Back-end에서 받은 응답을 저장하는 값
+	var http, result;
+	http = new XMLHttpRequest();
+	http.onreadystatechange = function(){
+		if(http.readyState == 4 && http.status == 200){
+			result = this.response;
+			if(result.length === 0){
+				alert("적용할 수 없는 관리자입니다.\n관리자 현황을 다시 확인해주세요.");
+			} else {
+				var data = result.split("|");
+				var mname = data[1];
+				alert(mname + "님은 적용 가능한 관리자입니다.");
+			}
+		}
+	}
+	http.open("post", "../office/officeInsert.do", true);
+	http.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+	http.send("midx=" + midx);
+}
+
 
 
 //주소 찾기 카카오 API 연동
@@ -193,7 +255,3 @@ function initLayerPosition(){
     element_layer.style.left = (((window.innerWidth || document.documentElement.clientWidth) - width)/2 - borderWidth) + 'px';
     element_layer.style.top = (((window.innerHeight || document.documentElement.clientHeight) - height)/2 - borderWidth) + 'px';
 }
-
-
-
-
