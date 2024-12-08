@@ -1,4 +1,4 @@
-package project.wms;
+package wms;
 
 import java.util.HashMap;
 import java.util.List;
@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import project.dto.ConfigDTO;
-import project.service.ConfigService;
+import wms.dto.ConfigDTO;
+import wms.service.ConfigService;
 
 @ComponentScan(basePackages = {"wms.dto","wms.service","wms.serviceimp"})
 @Controller

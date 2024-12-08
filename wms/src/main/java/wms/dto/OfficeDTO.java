@@ -1,4 +1,4 @@
-package project.dto;
+package wms.dto;
 
 import org.springframework.stereotype.Repository;
 

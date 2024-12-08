@@ -1,4 +1,4 @@
-package project.serviceimp;
+package wms.serviceimp;
 
 import java.util.List;
 import java.util.Map;
@@ -6,10 +6,10 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import project.dto.MemberDTO;
-import project.dto.OfficeDTO;
-import project.service.OfficeService;
-import project.wms.mapper.OfficeMapper;
+import wms.dto.MemberDTO;
+import wms.dto.OfficeDTO;
+import wms.service.OfficeService;
+import wms.OfficeMapper;
 
 @Service
 public class OfficeServiceimp implements OfficeService{

@@ -1,13 +1,13 @@
-package project.serviceimp;
+package wms.serviceimp;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import project.dto.MemberDTO;
-import project.service.MemberService;
-import project.wms.mapper.MemberMapper;
+import wms.dto.MemberDTO;
+import wms.service.MemberService;
+import wms.MemberMapper;
 
 @Service
 public class MemberServiceimp implements MemberService {

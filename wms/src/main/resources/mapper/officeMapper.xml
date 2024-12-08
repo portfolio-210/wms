@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="project.wms.mapper.OfficeMapper">
+<mapper namespace="wms.mapperer">
 
-	<select id="office_list" resultType="project.dto.OfficeDTO">
+	<select id="office_list" resultType="wms.dto.OfficeDTO">
 		select oidx, officename, mname, mhp, otel, memail, opost, oroad, oaddress from office where oview = 'Y' order by odate desc
 	</select>
 	
-	<select id="search_office" parameterType="String" resultType="project.dto.OfficeDTO">
+	<select id="search_office" parameterType="String" resultType="wms.dto.OfficeDTO">
 		select oidx, officename, mname, mhp, otel, memail, opost, oroad, oaddress from office where officename like concat('%',#{search},'%') and oview = 'Y' order by odate desc
 	</select>
 	
@@ -18,11 +18,11 @@
 		select count(*) as cnt from office where officename like concat('%',#{officename},'%') and oview = 'Y';
 	</select>
 	
-	<select id="poplist_member" resultType="project.dto.MemberDTO">
+	<select id="poplist_member" resultType="wms.dto.MemberDTO">
 		select midx, mid, mname, mjob, memail, mhp, approve from member where mpart = '지점' and approve not in ('퇴사', '대기') order by midx desc;
 	</select>
 	
-	<select id="search_member" parameterType="Map" resultType="project.dto.MemberDTO">
+	<select id="search_member" parameterType="Map" resultType="wms.dto.MemberDTO">
 		select * from member 
 		<choose>
 			<when test="part == '이름'">
@@ -38,7 +38,7 @@
 		order by mdate desc
 	</select>
 	
-	<select id="apply_member" parameterType="String" resultType="project.dto.MemberDTO">
+	<select id="apply_member" parameterType="String" resultType="wms.dto.MemberDTO">
 		select midx, mname, mhp, memail from member where midx = #{midx}
 	</select>
 	

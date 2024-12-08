@@ -1,11 +1,11 @@
-package project.wms.mapper;
+package wms;
 
 import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import project.dto.ConfigDTO;
+import wms.dto.ConfigDTO;
 
 @Mapper
 public interface ConfigMapper {

@@ -1,4 +1,4 @@
-package project.wms;
+package wms;
 
 import java.security.MessageDigest;
 

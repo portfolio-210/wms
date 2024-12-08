@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="project.wms.mapper.ConfigMapper">
+<mapper namespace="wms.mapperer">
 
-<select id="all" parameterType="Map" resultType="project.dto.ConfigDTO">
+<select id="all" parameterType="Map" resultType="wms.dto.ConfigDTO">
 
 select * from member
      
@@ -25,7 +25,7 @@ select * from member
 
 
 
-<select id="searchall" parameterType="String" resultType="project.dto.ConfigDTO">
+<select id="searchall" parameterType="String" resultType="wms.dto.ConfigDTO">
 
 select * from member ORDER BY midx DESC
 
@@ -49,7 +49,7 @@ select * from member ORDER BY midx DESC
 </select>
  
  
- <update id="update1" parameterType="project.dto.ConfigDTO">
+ <update id="update1" parameterType="wms.dto.ConfigDTO">
  
  	UPDATE member
     SET approve = #{part3}

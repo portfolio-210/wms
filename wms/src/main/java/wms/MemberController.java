@@ -1,4 +1,4 @@
-package project.wms;
+package wms;
 
 import java.io.PrintWriter;
 import java.util.List;
@@ -12,12 +12,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import project.dto.MemberDTO;
+import wms.dto.MemberDTO;
 import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import project.service.MemberService;
+import wms.service.MemberService;
 
 //@ComponentScan(basePackages = "DTO,service,serviceimp")
 @Controller

@@ -1,8 +1,7 @@
-package project.wms;
+package wms;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
-import project.WmsApplication;
 
 public class ServletInitializer extends SpringBootServletInitializer {
 

@@ -1,16 +1,12 @@
-package project.wms.mapper;
+package wms.service;
 
 import java.util.List;
 import java.util.Map;
 
-import org.apache.ibatis.annotations.Mapper;
+import wms.dto.MemberDTO;
+import wms.dto.OfficeDTO;
 
-import project.dto.MemberDTO;
-import project.dto.OfficeDTO;
-
-@Mapper
-public interface OfficeMapper {
-
+public interface OfficeService {
 	public List<OfficeDTO> office_list();
 	public List<OfficeDTO> search_office(String search);
 	public int delete_office(String oidx);

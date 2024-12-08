@@ -1,8 +1,8 @@
-package project.service;
+package wms.service;
 
 import java.util.List;
 
-import project.dto.MemberDTO;
+import wms.dto.MemberDTO;
 
 public interface MemberService {
 

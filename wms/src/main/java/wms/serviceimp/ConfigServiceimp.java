@@ -1,4 +1,4 @@
-package project.serviceimp;
+package wms.serviceimp;
 
 import java.util.List;
 import java.util.Map;
@@ -6,9 +6,9 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import project.dto.ConfigDTO;
-import project.service.ConfigService;
-import project.wms.mapper.ConfigMapper;
+import wms.dto.ConfigDTO;
+import wms.service.ConfigService;
+import wms.ConfigMapper;
 
 
 @Service

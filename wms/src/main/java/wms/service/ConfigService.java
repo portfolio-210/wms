@@ -1,9 +1,9 @@
-package project.service;
+package wms.service;
 
 import java.util.List;
 import java.util.Map;
 
-import project.dto.ConfigDTO;
+import wms.dto.ConfigDTO;
 
 public interface ConfigService {
 	
