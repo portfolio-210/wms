@@ -1,10 +1,8 @@
-package wms;
+package project.wms;
 
-import java.util.Base64;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Base64.Decoder;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
@@ -14,9 +12,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import dto.ConfigDTO;
-import jakarta.annotation.Resource;
-import service.ConfigService;
+import project.dto.ConfigDTO;
+import project.service.ConfigService;
 
 @ComponentScan(basePackages = {"wms.dto","wms.service","wms.serviceimp"})
 @Controller

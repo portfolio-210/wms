@@ -1,11 +1,9 @@
-package wms;
+package project.wms;
 
 import java.io.PrintWriter;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -14,19 +12,18 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import dto.MemberDTO;
+import project.dto.MemberDTO;
 import jakarta.annotation.Resource;
-import jakarta.servlet.ServletResponse;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import service.MemberService;
+import project.service.MemberService;
 
 //@ComponentScan(basePackages = "DTO,service,serviceimp")
 @Controller
 public class MemberController implements security {
 	@Resource(name="memberdto")
-	MemberDTO dto;
+    MemberDTO dto;
 	
 	@Autowired
 	private MemberService ms;

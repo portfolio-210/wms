@@ -1,4 +1,4 @@
-package serviceimp;
+package project.serviceimp;
 
 import java.util.List;
 import java.util.Map;
@@ -6,14 +6,15 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import dto.MemberDTO;
-import dto.OfficeDTO;
-import service.OfficeService;
+import project.dto.MemberDTO;
+import project.dto.OfficeDTO;
+import project.service.OfficeService;
+import project.wms.mapper.OfficeMapper;
 
 @Service
 public class OfficeServiceimp implements OfficeService{
 	@Autowired
-	wms.mapper.OfficeMapper om;
+    OfficeMapper om;
 	
 	
 	//지점 현황 전체 목록 조회

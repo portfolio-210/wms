@@ -1,18 +1,15 @@
-package wms.mapper;
+package project.service;
 
 import java.util.List;
 import java.util.Map;
 
-import org.apache.ibatis.annotations.Mapper;
+import project.dto.ConfigDTO;
 
-import dto.ConfigDTO;
-
-@Mapper
-public interface ConfigMapper {
-
+public interface ConfigService {
+	
+	
 	List<ConfigDTO> all(Map<String, Object> keycode);
 	List<ConfigDTO> searchall();
 	int update1(ConfigDTO configDTO);
-	
 	
 }

@@ -1,4 +1,4 @@
-package wms;
+package project.wms;
 
 import java.io.PrintWriter;
 import java.util.Base64;
@@ -16,12 +16,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import dto.MemberDTO;
-import dto.OfficeDTO;
+import project.dto.MemberDTO;
+import project.dto.OfficeDTO;
 import jakarta.annotation.Resource;
 import jakarta.servlet.ServletResponse;
 import jakarta.servlet.http.HttpServletResponse;
-import service.OfficeService;
+import project.service.OfficeService;
 
 @ComponentScan(basePackages = {"wms.dto","wms.service","wms.serviceimp"})
 @Controller
@@ -32,7 +32,7 @@ public class OfficeController {
 	OfficeDTO odto;
 	
 	@Autowired
-	OfficeService os;
+    OfficeService os;
 
 //officeMain.jsp Controller
 	//전체 지점 현황 페이지 출력

@@ -1,8 +1,6 @@
-package wms;
+package project.wms;
 
 import java.security.MessageDigest;
-
-import org.springframework.stereotype.Service;
 
 // 패스워드 암호화 하는 인터페이스
 

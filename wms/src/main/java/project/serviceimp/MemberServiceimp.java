@@ -1,17 +1,19 @@
-package serviceimp;
+package project.serviceimp;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import dto.MemberDTO;
-import service.MemberService;
+import project.dto.MemberDTO;
+import project.service.MemberService;
+import project.wms.mapper.MemberMapper;
+
 @Service
 public class MemberServiceimp implements MemberService {
 
 	@Autowired
-	private wms.mapper.MemberMapper mm;
+	private MemberMapper mm;
 	
 	
 	// 회원가입

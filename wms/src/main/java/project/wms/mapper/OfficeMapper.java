@@ -1,12 +1,12 @@
-package wms.mapper;
+package project.wms.mapper;
 
 import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import dto.MemberDTO;
-import dto.OfficeDTO;
+import project.dto.MemberDTO;
+import project.dto.OfficeDTO;
 
 @Mapper
 public interface OfficeMapper {

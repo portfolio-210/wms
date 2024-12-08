@@ -1,10 +1,10 @@
-package wms.mapper;
+package project.wms.mapper;
 
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import dto.MemberDTO;
+import project.dto.MemberDTO;
 
 @Mapper
 public interface MemberMapper {

@@ -1,8 +1,8 @@
-package service;
+package project.service;
 
 import java.util.List;
 
-import dto.MemberDTO;
+import project.dto.MemberDTO;
 
 public interface MemberService {
 

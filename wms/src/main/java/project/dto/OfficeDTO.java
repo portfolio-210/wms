@@ -1,4 +1,4 @@
-package dto;
+package project.dto;
 
 import org.springframework.stereotype.Repository;
 
