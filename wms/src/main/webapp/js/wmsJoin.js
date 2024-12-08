@@ -32,7 +32,7 @@ function idcheck() {
 	
     var id = document.getElementById("mid");
 	
-	
+
     if (f1.mid.value == "") {
         alert("아이디를 입력하세요");
         f1.mid.focus();
@@ -41,6 +41,7 @@ function idcheck() {
 					alert("아이디를 입력해주세요.");
 					return false;
 			}
+
 			else if(f1.mid.value=="admin"||f1.mid.value=="master"||f1.mid.value=="webmaster"||f1.mid.value=="administrator"|| f1.mid.value=="manager"){
 					alert("＂"+f1.mid.value+"＂"+ "의 아이디는 사용이 불가능합니다.");
 					f1.mid.value = "";
@@ -50,11 +51,13 @@ function idcheck() {
 		        	alert("아이디는 최소 4자 이상이어야 합니다.");
 		        	return false;
 		    }
+
 			// 아이디 영문자만 허용 (정규식으로 확인)
 			else if (!idRegex.test(f1.mid.value)) {
 			       alert("아이디는 특수문자 및 대문자를 사용할수 없습니다.");
 				   f1.mid.value = "";
 			       return false;
+				  
 				
     } else {
         var data = f1.mid.value.replaceAll(" ", "");
@@ -84,11 +87,18 @@ function idcheck() {
                     console.log(result);
                 }
             };
+
             http.open("post", "./idcheck.do", true);  // 해당 백엔드 경로로 비동기 통신
             http.setRequestHeader("content-type", "application/x-www-form-urlencoded");
             http.send("mid=" + f1.mid.value);  // POST 요청으로 아이디 전송
         }
     }
+}
+
+function part_click(){
+	if(f1.mpart.value=="본사"){
+		f1.mspot.value="N";
+	}
 }
 
 function login_check(){
@@ -108,6 +118,7 @@ function login_check(){
 		}
 		else if(f1.mpart.value=="본사"){
 					f1.mspot.value="N";
+					
 				}
 		
 		
@@ -117,6 +128,7 @@ function login_check(){
 				repw.value="";
 				return false;
 			    }
+				
 		else if (!nameRegex.test(f1.mname.value)) {
 				 alert("이름은 한글로 2~4글자만 입력 가능합니다.");
 				 f1.mname.value = "";
@@ -124,6 +136,7 @@ function login_check(){
 				 repw.value="";
 				 return false;
 				}		
+				
 		else if(f1.mjob.value == ""){
 				alert("직책을 선택해주세요.");
 				f1.mpass.value="";
@@ -140,6 +153,7 @@ function login_check(){
 	        alert("비밀번호를 입력하세요");
 	        return false;
     	}
+		
 	    else if (f1.mpass.value.length < 6) {
 	        alert("비밀번호는 최소 6자 이상이어야 합니다.");
 			f1.mpass.value="";

@@ -3,7 +3,9 @@ package wms;
 import java.io.PrintWriter;
 import java.util.Base64;
 import java.util.Base64.Decoder;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import dto.MemberDTO;
 import dto.OfficeDTO;
 import jakarta.annotation.Resource;
 import jakarta.servlet.ServletResponse;
@@ -93,6 +96,12 @@ public class OfficeController {
 	
 	
 //officeInsert.jsp Controller
+	//지점 등록 초기 화면 출력
+	@GetMapping("/office/officeInsert.do")
+	public String offict_insert() {
+		return null;
+	}
+	
 	//등록할 지점 중복 검사
 	@CrossOrigin("*")	//AJAX CORS 방지
 	@PostMapping("/office/officenameCheck.do")
@@ -108,6 +117,85 @@ public class OfficeController {
 			else {
 				result = os.check_officename(officename);
 				this.pw.print(result);
+			}
+		} catch (Exception e) {
+			this.pw.print("<script>"
+					+ "alert('서버가 불안정합니다. 잠시 후에 다시 시도 해주세요.');"
+					+ "history.go(-1);"
+					+ "</script>");
+		} finally {
+			this.pw.close();
+		}
+		return null;
+	}
+	
+	//지점 등록
+	@GetMapping("/office/office_insert.do")
+	public String office_insert(@RequestParam("oidx")String oidx, @RequestParam("key")String key, ServletResponse res) {
+		res.setContentType("text/html;charset=utf-8");
+		try {
+			this.pw = res.getWriter();
+			
+			int result = os.insert_office();
+			if(result > 0) {
+				this.pw.print("<script>"
+						+ "alert('해당 지점이 등록 되었습니다.');"
+						+ "location.href='./officeMain.do';"
+						+ "</script>");
+			}
+			else {
+				this.pw.print("<script>"
+						+ "alert('게시물 등록에 실패하였습니다.\n입력한 정보를 다시 한 번 확인해주세요.');"
+						+ "history.go(-1);"
+						+ "</script>");
+			}
+			
+		} catch (Exception e) {
+			System.out.println("삭제 실패");
+			System.out.println(e.getMessage());
+		} finally {
+			this.pw.close();
+		}
+		return null;
+	}
+	
+	
+//officePopList.jsp Controller
+	//지점 관리자 목록 출력
+	@GetMapping("/office/officePopList.do")
+	public String office_poplist(Model m) {
+		List<MemberDTO> all = os.poplist_member();
+		m.addAttribute("all", all);
+		m.addAttribute("total", all.size());
+		
+		return null;
+	}
+	
+	//관리자 검색
+	@PostMapping("/office/officePopList.do")
+	public String search_member(@RequestParam("part") String part, @RequestParam("search") String search, Model m) {
+		Map<String, String> keyword = new HashMap<>();
+		keyword.put("part", part);
+		keyword.put("search", search);
+		List<MemberDTO> all = os.search_member(keyword);
+		m.addAttribute("all", all);
+		return null;
+	}
+	
+	//지점 등록 버튼 클릭 시 insert
+	@CrossOrigin("*")
+	@PostMapping("/office/officeInsert.do")
+	public String apply_member(@RequestParam("midx") String midx, HttpServletResponse res) {
+		res.setContentType("text/html;charset=utf-8");
+		try {
+			this.pw = res.getWriter();
+			List<MemberDTO> result = null;
+			if(midx == "") {
+				System.out.println("midx = 빈 값");
+			} else {
+				result = os.apply_member(midx);
+				String mname =result.get(0).getMname();
+				this.pw.print(result + "|" + mname);
 			}
 		} catch (Exception e) {
 			this.pw.print("<script>"

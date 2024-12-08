@@ -22,7 +22,7 @@
             </li>
             <li class="num_font13_bold">거래처 코드</li>
             <li style="display: flex; flex-direction: row;">
-                <input type="text" name="" id="" value="" style="width:120px; height: 40px;" class="form-control font12" readonly>&nbsp;&nbsp;※ 거래처 코드는 자동 생성 됩니다.
+                <input type="text" name="acode" id="acode" value="" style="width:120px; height: 40px;" class="form-control font12" readonly>&nbsp;&nbsp;※ 거래처 코드는 자동 생성 됩니다.
             </li>
         </ul> 
         <ul class="ul-1">

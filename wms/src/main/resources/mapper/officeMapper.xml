@@ -17,4 +17,33 @@
 	<select id="check_officename" parameterType="String" resultType="String">
 		select count(*) as cnt from office where officename like concat('%',#{officename},'%') and oview = 'Y';
 	</select>
+	
+	<select id="poplist_member" resultType="dto.MemberDTO">
+		select midx, mid, mname, mjob, memail, mhp, approve from member where mpart = '지점' and approve not in ('퇴사', '대기') order by midx desc;
+	</select>
+	
+	<select id="search_member" parameterType="Map" resultType="dto.MemberDTO">
+		select * from member 
+		<choose>
+			<when test="part == '이름'">
+				where mname like concat('%',#{search},'%')
+			</when>
+			<when test="part == '아이디'">
+				where mid like concat('%',#{search},'%')
+			</when>
+			<when test="part == '연락처'">
+				where mhp like concat('%',#{search},'%')
+			</when>
+		</choose>
+		order by mdate desc
+	</select>
+	
+	<select id="apply_member" parameterType="String" resultType="dto.MemberDTO">
+		select midx, mname, mhp, memail from member where midx = #{midx}
+	</select>
+	
+	<!-- officeInsert 지점 등록하기 버튼 시 적용 -->
+	<insert id="insert_office">
+		insert into office (oidx, officename, mname, mhp, otel, memail, opost, oroad, oaddress, odate) values ('0', #{officename}, #{mname}, #{mhp}, #{otel}, #{memail}, #{opost}, #{oroad}, #{oaddresdd}, now())
+	</insert>
 </mapper>
