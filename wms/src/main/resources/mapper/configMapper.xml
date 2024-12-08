@@ -6,20 +6,21 @@
 
 select * from member
      
-               where mpart = #{part1} AND mname LIKE CONCAT('%', #{search}, '%')  <!-- 본사 또는 지점 -->    
+               where mpart = #{part1}  <!-- 본사 또는 지점 -->    
             <choose>
-                <when test="part2 == '1'">
+                <when test="part2 == '이름'">
                     AND mname LIKE CONCAT('%', #{search}, '%') <!-- 이름 검색 -->
                 </when>
-                <when test="part2 == '2'">
+                <when test="part2 == '아이디'">
                     AND mid LIKE CONCAT('%', #{search}, '%') <!-- 아이디 검색 -->
                 </when>
-                <when test="part2 == '3'">
-                    AND memail LIKE CONCAT('%', #{search}, '%') <!-- 이메일 검색 -->
+                <when test="part2 == '연락처'">
+                    AND mhp LIKE CONCAT('%', #{search}, '%') <!-- 이메일 검색 -->
                 </when>
             </choose>
   
         ORDER BY midx DESC
+     
 </select>
 
 
@@ -29,9 +30,26 @@ select * from member
 select * from member ORDER BY midx DESC
 
 </select>
+
+<select id="Totals" parameterType="Map" resultType="int">
+    SELECT COUNT(*) 
+    FROM member 
+    WHERE mpart = #{part1} 
+    <choose>
+        <when test="part2 == '이름'">
+            AND mname LIKE CONCAT('%', #{search}, '%') <!-- 이름 검색 -->
+        </when>
+        <when test="part2 == '아이디'">
+            AND mid LIKE CONCAT('%', #{search}, '%') <!-- 아이디 검색 -->
+        </when>
+        <when test="part2 == '연락처'">
+            AND mhp LIKE CONCAT('%', #{search}, '%') <!-- 이메일 검색 -->
+        </when>
+    </choose>
+</select>
  
  
- <update id="update" parameterType="dto.ConfigDTO">
+ <update id="update1" parameterType="dto.ConfigDTO">
  
  	UPDATE member
     SET approve = #{part3}

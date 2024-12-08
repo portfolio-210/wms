@@ -5,10 +5,14 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import dto.ConfigDTO;
+
 @Mapper
 public interface ConfigMapper {
 
-	List<dto.ConfigDTO> all(Map<String, String> keycode);
-	List<dto.ConfigDTO> searchall();
+	List<ConfigDTO> all(Map<String, Object> keycode);
+	List<ConfigDTO> searchall();
+	int update1(ConfigDTO configDTO);
+	
 	
 }

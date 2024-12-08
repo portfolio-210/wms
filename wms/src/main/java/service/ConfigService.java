@@ -3,8 +3,13 @@ package service;
 import java.util.List;
 import java.util.Map;
 
-public interface ConfigService {
+import dto.ConfigDTO;
 
-	List<dto.ConfigDTO> all(Map<String, String> keycode);
+public interface ConfigService {
+	
+	
+	List<dto.ConfigDTO> all(Map<String, Object> keycode);
 	List<dto.ConfigDTO> searchall();
+	int update1(ConfigDTO configDTO);
+	
 }

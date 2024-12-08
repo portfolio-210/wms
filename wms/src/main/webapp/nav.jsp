@@ -64,7 +64,7 @@
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">환경설정</a>
         <div class="dropdown-menu">
-          <a class="dropdown-item" href="../config/config_main.do"">관리자 현황</a>
+          <a class="dropdown-item" href="../config/configMain.do"">관리자 현황</a>
           <a class="dropdown-item" href="#">지점 현황</a>
           <a class="dropdown-item" href="../account/accountMain.jsp">거래처 현황</a>
           <a class="dropdown-item" href="#">팔레트 현황</a>

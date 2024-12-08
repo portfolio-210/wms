@@ -15,7 +15,7 @@
   <div class="container">
     <div>
     <p class="sub_title font16_bold">관리자 현황</p>
-    <form id="frm" method="post" action="/config/config_main.do" onsubmit="return getFormInfo()">
+    
   
     <div class="mb-3" style="position: relative;">
         <ul class="ul-2">
@@ -33,9 +33,9 @@
 		    <li class="num_font13_bold">검색형식</li>
 		    <li style="width: 85%; display: flex; flex-direction: row;">
 		        <select name="part2" id="part2" style="width: 100px; height: 40px; margin-right: 5px;" class="form-control font12">
-		            <option value="1">이름</option>
-		            <option value="2">아이디</option>
-		            <option value="3">연락처</option>
+		            <option value="이름">이름</option>
+		            <option value="아이디">아이디</option>
+		            <option value="연락처">연락처</option>
 		        </select>
 		        <input type="text" id="searchKeyword" name="search" style="width: 200px; height: 40px;" class="form-control font12" placeholder="검색어를 입력하세요">
 		        <button type="button" onclick="getFormInfo()" class="btn btn-primary font12" style="width: 70px; height: 40px; margin-left: 10px; margin-right: 10px;">검색</button>
@@ -69,15 +69,16 @@
                 <td>${member.memail}</td>
                 <td>${member.mhp}</td>
                 <td>
-                    <select name="part3" id="part3" style="width: 80px; height: 30px;" class="form-control font12">
-                        <option value="대기">대기</option>
-                        <option value="근무">근무</option>
-                        <option value="휴직">휴직</option>
-                        <option value="퇴사">퇴사</option>
+                    <select name="part3" id="part3_${member.midx}" style="width: 80px; height: 30px;" class="form-control font12">
+            
+                        <option value="대기" <c:if test="${member.approve == '대기'}">selected </c:if>>대기</option>
+                        <option value="근무" <c:if test="${member.approve == '근무'}">selected </c:if>>근무</option>
+                        <option value="휴직" <c:if test="${member.approve == '휴직'}">selected </c:if>>휴직</option>
+                        <option value="퇴사" <c:if test="${member.approve == '퇴사'}">selected </c:if>>퇴사</option>
                     </select>
                 </td>
                 <td style="text-align: center;">
-                    <button type="button" class="btn btn-dark font12" style="width: 50px; height: 30px; margin-right: 10px;" onclick="do()">적용</button> 
+                    <button type="button" class="btn btn-dark font12" style="width: 50px; height: 30px; margin-right: 10px;" onclick="change4(${member.midx})">적용</button> 
                 </td>
               </tr>            
             </tbody>

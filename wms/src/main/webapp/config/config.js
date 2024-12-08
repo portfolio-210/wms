@@ -1,3 +1,6 @@
+
+var frm = document.createElement("form");
+
 function getFormInfo() {
     var a = document.getElementById("searchKeyword").value.trim();
     
@@ -7,11 +10,12 @@ function getFormInfo() {
     } else {
         // 검색어를 비우기
         //document.getElementById("searchKeyword").value = "";
-
+		
+		frm.innerHTML = ""; // 이전 필드 제거
         // 새로운 폼 요소 생성
-        var frm = document.createElement("form");
+       
         frm.method = "post"; // 폼 메서드 설정
-        frm.action = "/config/config_main.do"; // 폼 액션 설정
+        frm.action = "/config/configMain.do"; // 폼 액션 설정
 
         // 소속 (part1) 필드 추가
         var part1 = document.createElement("input");
@@ -44,14 +48,40 @@ function getFormInfo() {
 
 function searchall(){
 	//document.getElementById("searchKeyword").value = "";
-	var frc = document.createElement("form");
-	       frc.method = "get"; // 폼 메서드 설정
-	       frc.action = "/config/config_main.do"; // 폼 액션 설정
+		
+			frm.innerHTML = ""; // 이전 필드 제거
+	
+	       frm.method = "get"; // 폼 메서드 설정
+	       frm.action = "/config/configMain.do"; // 폼 액션 설정
 	       // 폼을 body에 추가
-	       document.body.appendChild(frc);
+	       document.body.appendChild(frm);
 
 	       // 폼 제출
-	       frc.submit();
+	       frm.submit();
 	  	
+}
+
+function change4(mid){
+			frm.innerHTML = ""; // 이전 필드 제거
+	
+		   frm.method = "POST"; // 폼 메서드 설정
+	       frm.action = "/config/update.do"; // 폼 액션 설정
+
+	       // 소속 (part3) 필드 추가
+	       var part3 = document.getElementById("part3_"+mid);
+		   var part3go = document.createElement("input");
+		   part3go.type = "hidden"; // 숨겨진 입력 필드로 설정
+		   part3go.name = "part3"; // 이름 설정
+		   part3go.value = part3.value;		   	      // 숨겨진 입력 필드로 설정
+		   frm.appendChild(part3go);
+		   
+		   var midx = document.createElement("input");
+		       midx.type = "hidden"; // 숨겨진 입력 필드로 설정
+		       midx.name = "midx"; // 이름 설정
+		       midx.value = mid // midx 값 설정
+		       frm.appendChild(midx);
+		
+		   document.body.appendChild(frm);
+		   frm.submit();
 }
 
