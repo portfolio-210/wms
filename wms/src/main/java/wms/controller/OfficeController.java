@@ -1,4 +1,4 @@
-package wms;
+package wms.controller;
 
 import java.io.PrintWriter;
 import java.util.Base64;

@@ -1,4 +1,4 @@
-package wms;
+package wms.mapper;
 
 import java.util.List;
 import java.util.Map;

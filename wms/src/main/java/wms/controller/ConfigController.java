@@ -1,4 +1,4 @@
-package wms;
+package wms.controller;
 
 import java.util.HashMap;
 import java.util.List;

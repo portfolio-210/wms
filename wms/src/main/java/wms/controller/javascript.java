@@ -1,4 +1,4 @@
-package wms;
+package wms.controller;
 
 //이거 건드리면 죽음뿐!!!!
 //이거 건드리면 죽음뿐!!!!

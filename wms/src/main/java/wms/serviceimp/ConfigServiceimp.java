@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import wms.dto.ConfigDTO;
+import wms.mapper.ConfigMapper;
 import wms.service.ConfigService;
-import wms.ConfigMapper;
 
 
 @Service

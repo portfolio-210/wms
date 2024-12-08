@@ -1,4 +1,4 @@
-package wms;
+package wms.controller;
 
 import java.io.PrintWriter;
 import java.util.List;
@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import wms.security;
 import wms.dto.MemberDTO;
 import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpServletRequest;
